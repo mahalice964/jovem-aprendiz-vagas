@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "titulo": "Aprendiz Administrativo",
+        "empresa": "Empresa ABC",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "tipo": "Jovem Aprendiz",
+        "periodo": "Meio período",
+        "area": "Administrativo",
+        "descricao": "Oportunidade para atuar como aprendiz na área administrativa, auxiliando nas atividades do escritório.",
+        "requisitos": [
+            "Estar estudando ou ter concluído o ensino médio",
+            "Ter interesse em aprender",
+            "Boa comunicação"
+        ]
+    },
+    {
+        "id": 2,
+        "titulo": "Aprendiz de Atendimento",
+        "empresa": "Tech Solutions",
+        "cidade": "Campinas",
+        "estado": "SP",
+        "tipo": "Jovem Aprendiz",
+        "periodo": "Meio período",
+        "area": "Atendimento",
+        "descricao": "Oportunidade para aprender e atuar com atendimento ao cliente e suporte às atividades da empresa.",
+        "requisitos": [
+            "Estar estudando",
+            "Boa comunicação",
+            "Conhecimentos básicos de informática"
+        ]
+    },
+    {
+        "id": 3,
+        "titulo": "Aprendiz de Logística",
+        "empresa": "Mercado Mais",
+        "cidade": "Itu",
+        "estado": "SP",
+        "tipo": "Jovem Aprendiz",
+        "periodo": "Meio período",
+        "area": "Logística",
+        "descricao": "Oportunidade para auxiliar a equipe de logística e conhecer os processos de organização e distribuição.",
+        "requisitos": [
+            "Estar estudando ou ter concluído o ensino médio",
+            "Organização",
+            "Vontade de aprender"
+        ]
+    },
+    {
+        "id": 4,
+        "titulo": "Aprendiz de Recursos Humanos",
+        "empresa": "Nova Gestão",
+        "cidade": "Sorocaba",
+        "estado": "SP",
+        "tipo": "Jovem Aprendiz",
+        "periodo": "Meio período",
+        "area": "Recursos Humanos",
+        "descricao": "Auxílio nas atividades administrativas do setor de Recursos Humanos.",
+        "requisitos": [
+            "Estar estudando",
+            "Organização",
+            "Boa comunicação"
+        ]
+    },
+    {
+        "id": 5,
+        "titulo": "Aprendiz de Tecnologia",
+        "empresa": "Tech Brasil",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "tipo": "Jovem Aprendiz",
+        "periodo": "Meio período",
+        "area": "Tecnologia",
+        "descricao": "Uma oportunidade para jovens interessados em tecnologia e informática conhecerem a rotina de uma empresa de tecnologia.",
+        "requisitos": [
+            "Interesse por tecnologia",
+            "Conhecimentos básicos de informática",
+            "Vontade de aprender"
+        ]
+    }
+]
