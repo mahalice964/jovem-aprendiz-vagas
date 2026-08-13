@@ -1,22 +1,373 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
-    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: #172033;
+    line-height: 1.6;
 }
 
-h1 {
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+
+/* HEADER */
+
+.header {
+    background: white;
+    border-bottom: 1px solid #e8ebf0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-content {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
     color: #2563eb;
 }
 
-h2 {
+.logo span {
     color: #111827;
 }
 
-p {
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.menu a:hover {
+    color: #2563eb;
+}
+
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+    padding: 80px 0;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.tag,
+.section-tag {
+    color: #2563eb;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.05;
+    max-width: 800px;
+    margin: 15px auto;
+}
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+.hero-description {
+    color: #64748b;
+    font-size: 19px;
+    max-width: 650px;
+    margin: 20px auto 40px;
+}
+
+
+/* BUSCA */
+
+.search-box {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.10);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+
+    max-width: 1000px;
+    margin: auto;
+    text-align: left;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.search-field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+}
+
+.search-field input {
+    border: 1px solid #dbe1ea;
+    border-radius: 10px;
+    padding: 14px;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-field input:focus {
+    border-color: #2563eb;
+}
+
+.search-box button {
+    align-self: end;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 24px;
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #1d4ed8;
+}
+
+
+/* VAGAS */
+
+.vagas-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.section-title h2,
+.dicas h2,
+.sobre h2 {
+    font-size: 32px;
+    margin-top: 5px;
+}
+
+#contador {
+    color: #64748b;
+    font-weight: 600;
+}
+
+.vagas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.vaga-card {
+    background: white;
+    border: 1px solid #e8ebf0;
+    border-radius: 18px;
+    padding: 24px;
+
+    display: flex;
+    gap: 18px;
+
+    transition: 0.2s;
+}
+
+.vaga-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.empresa-logo {
+    min-width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dbeafe;
+    color: #2563eb;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.vaga-info {
+    width: 100%;
+}
+
+.vaga-tipo {
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.vaga-info h3 {
     font-size: 18px;
+    margin: 4px 0;
+}
+
+.empresa {
+    font-weight: 600;
+    color: #475569;
+}
+
+.local {
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.vaga-footer {
+    border-top: 1px solid #eef0f4;
+    margin-top: 18px;
+    padding-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+    color: #64748b;
+}
+
+.ver-vaga {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* DICAS */
+
+.dicas {
+    background: white;
+    padding: 80px 0;
+}
+
+.dicas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.dica-card {
+    background: #f8fafc;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.dica-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.dica-card h3 {
+    margin-bottom: 8px;
+}
+
+.dica-card p {
+    color: #64748b;
+}
+
+
+/* SOBRE */
+
+.sobre {
+    padding: 80px 0;
+}
+
+.sobre p {
+    max-width: 700px;
+    color: #64748b;
+    margin-top: 15px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    padding: 45px 0;
+}
+
+footer p {
+    color: #cbd5e1;
+    margin: 8px 0;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+    .menu {
+        display: none;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .vagas-grid,
+    .dicas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
 }
