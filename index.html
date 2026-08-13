@@ -2,24 +2,402 @@
 <html lang="pt-BR">
 
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jovem+ | Primeiro Emprego</title>
+    <title>Jovem+ | Encontre seu primeiro emprego</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Jovem+</h1>
+    <!-- CABEÇALHO -->
 
-    <h2>Encontre sua primeira oportunidade</h2>
+    <header class="header">
 
-    <p>
-        Encontre vagas de Jovem Aprendiz e dê o primeiro passo
-        para sua carreira.
-    </p>
+        <div class="container header-content">
+
+            <a href="index.html" class="logo">
+                Jovem<span>+</span>
+            </a>
+
+            <nav class="menu">
+
+                <a href="index.html">Início</a>
+
+                <a href="#vagas">Vagas</a>
+
+                <a href="#dicas">Dicas</a>
+
+                <a href="#sobre">Sobre</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- PRINCIPAL -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <p class="tag">
+                        🚀 Seu primeiro passo começa aqui
+                    </p>
+
+                    <h1>
+                        Encontre sua primeira
+                        <span>oportunidade</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Encontre vagas de Jovem Aprendiz e
+                        dê o primeiro passo para construir
+                        sua carreira.
+                    </p>
+
+                </div>
+
+
+                <!-- BUSCA -->
+
+                <div class="search-box">
+
+                    <div class="search-field">
+
+                        <label for="busca">
+                            🔎 O que você procura?
+                        </label>
+
+                        <input
+                            type="text"
+                            id="busca"
+                            placeholder="Ex: Jovem Aprendiz, administrativo..."
+                        >
+
+                    </div>
+
+
+                    <div class="search-field">
+
+                        <label for="cidade">
+                            📍 Onde?
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cidade"
+                            placeholder="Ex: São Paulo"
+                        >
+
+                    </div>
+
+
+                    <button id="buscarBtn">
+                        Encontrar vagas
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VAGAS -->
+
+        <section class="vagas-section" id="vagas">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <div>
+                        <p class="section-tag">
+                            Oportunidades
+                        </p>
+
+                        <h2>
+                            Vagas em destaque
+                        </h2>
+                    </div>
+
+                    <span id="contador">
+                        3 vagas
+                    </span>
+
+                </div>
+
+
+                <div class="vagas-grid" id="listaVagas">
+
+
+                    <!-- VAGA 1 -->
+
+                    <article class="vaga-card">
+
+                        <div class="empresa-logo">
+                            A
+                        </div>
+
+                        <div class="vaga-info">
+
+                            <span class="vaga-tipo">
+                                Jovem Aprendiz
+                            </span>
+
+                            <h3>
+                                Aprendiz Administrativo
+                            </h3>
+
+                            <p class="empresa">
+                                Empresa ABC
+                            </p>
+
+                            <p class="local">
+                                📍 São Paulo - SP
+                            </p>
+
+                            <div class="vaga-footer">
+
+                                <span>
+                                    🕐 Meio período
+                                </span>
+
+                                <button class="ver-vaga">
+                                    Ver vaga
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VAGA 2 -->
+
+                    <article class="vaga-card">
+
+                        <div class="empresa-logo">
+                            T
+                        </div>
+
+                        <div class="vaga-info">
+
+                            <span class="vaga-tipo">
+                                Jovem Aprendiz
+                            </span>
+
+                            <h3>
+                                Aprendiz de Atendimento
+                            </h3>
+
+                            <p class="empresa">
+                                Tech Solutions
+                            </p>
+
+                            <p class="local">
+                                📍 Campinas - SP
+                            </p>
+
+                            <div class="vaga-footer">
+
+                                <span>
+                                    🕐 Meio período
+                                </span>
+
+                                <button class="ver-vaga">
+                                    Ver vaga
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VAGA 3 -->
+
+                    <article class="vaga-card">
+
+                        <div class="empresa-logo">
+                            M
+                        </div>
+
+                        <div class="vaga-info">
+
+                            <span class="vaga-tipo">
+                                Jovem Aprendiz
+                            </span>
+
+                            <h3>
+                                Aprendiz de Logística
+                            </h3>
+
+                            <p class="empresa">
+                                Mercado Mais
+                            </p>
+
+                            <p class="local">
+                                📍 Itu - SP
+                            </p>
+
+                            <div class="vaga-footer">
+
+                                <span>
+                                    🕐 Meio período
+                                </span>
+
+                                <button class="ver-vaga">
+                                    Ver vaga
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DICAS -->
+
+        <section class="dicas" id="dicas">
+
+            <div class="container">
+
+                <p class="section-tag">
+                    Para você
+                </p>
+
+                <h2>
+                    Prepare-se para sua primeira oportunidade
+                </h2>
+
+                <div class="dicas-grid">
+
+                    <div class="dica-card">
+
+                        <div class="dica-icon">
+                            📄
+                        </div>
+
+                        <h3>
+                            Monte seu currículo
+                        </h3>
+
+                        <p>
+                            Aprenda como criar um currículo
+                            mesmo sem experiência profissional.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dica-card">
+
+                        <div class="dica-icon">
+                            💬
+                        </div>
+
+                        <h3>
+                            Prepare-se para entrevistas
+                        </h3>
+
+                        <p>
+                            Veja dicas para se preparar
+                            para sua primeira entrevista.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dica-card">
+
+                        <div class="dica-icon">
+                            🎯
+                        </div>
+
+                        <h3>
+                            Desenvolva suas habilidades
+                        </h3>
+
+                        <p>
+                            Descubra quais habilidades podem
+                            ajudar no começo da sua carreira.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+
+        <section class="sobre" id="sobre">
+
+            <div class="container">
+
+                <h2>
+                    Sobre o Jovem+
+                </h2>
+
+                <p>
+                    O Jovem+ é um projeto criado para facilitar
+                    o acesso de jovens às oportunidades de
+                    primeiro emprego e Jovem Aprendiz.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="container">
+
+            <strong>
+                Jovem+
+            </strong>
+
+            <p>
+                Conectando jovens às primeiras oportunidades.
+            </p>
+
+            <small>
+                Projeto desenvolvido para fins educacionais.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 
