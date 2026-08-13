@@ -203,36 +203,13 @@ cidade.addEventListener(
 
 
 /* VER VAGA */
-
+ 
 function verVaga(id) {
 
-    const vaga = todasAsVagas.find(
-        function(item) {
-            return item.id === id;
-        }
-    );
+    window.location.href =
+        "vaga.html?id=" + id;
 
-
-    if (!vaga) {
-        return;
-    }
-
-
-    alert(
-
-        vaga.titulo +
-
-        "\n\nEmpresa: " +
-        vaga.empresa +
-
-        "\nLocal: " +
-        vaga.cidade +
-        " - " +
-        vaga.estado +
-
-        "\n\nDescrição:\n" +
-        vaga.descricao
-
+}
     );
 
 }
