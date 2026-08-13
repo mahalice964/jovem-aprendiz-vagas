@@ -16,17 +16,21 @@ async function carregarVagas() {
 
         const resposta = await fetch("vagas.json");
 
+        if (!resposta.ok) {
+            throw new Error("Não foi possível carregar o arquivo vagas.json");
+        }
+
         todasAsVagas = await resposta.json();
 
         mostrarVagas(todasAsVagas);
 
     } catch (erro) {
 
-        console.error("Erro ao carregar vagas:", erro);
+        console.error(erro);
 
         listaVagas.innerHTML = `
             <p>
-                Não foi possível carregar as vagas.
+                Ocorreu um erro ao carregar as vagas.
             </p>
         `;
 
@@ -42,7 +46,8 @@ function mostrarVagas(vagas) {
     listaVagas.innerHTML = "";
 
     contador.textContent =
-        vagas.length + (vagas.length === 1 ? " vaga" : " vagas");
+        vagas.length +
+        (vagas.length === 1 ? " vaga" : " vagas");
 
 
     if (vagas.length === 0) {
@@ -57,11 +62,12 @@ function mostrarVagas(vagas) {
     }
 
 
-    vagas.forEach(function (vaga) {
+    vagas.forEach(function(vaga) {
 
         const card = document.createElement("article");
 
         card.className = "vaga-card";
+
 
         card.innerHTML = `
 
@@ -102,7 +108,9 @@ function mostrarVagas(vagas) {
                 </div>
 
             </div>
+
         `;
+
 
         listaVagas.appendChild(card);
 
@@ -113,22 +121,28 @@ function mostrarVagas(vagas) {
 
 /* PESQUISAR */
 
-buscarBtn.addEventListener("click", function () {
+function pesquisarVagas() {
 
-    const termo = busca.value.toLowerCase().trim();
+    const termo = busca.value
+        .toLowerCase()
+        .trim();
 
-    const localizacao = cidade.value.toLowerCase().trim();
+    const localizacao = cidade.value
+        .toLowerCase()
+        .trim();
 
 
-    const resultado = todasAsVagas.filter(function (vaga) {
+    const resultado = todasAsVagas.filter(function(vaga) {
 
         const textoCompleto = `
+
             ${vaga.titulo}
             ${vaga.empresa}
             ${vaga.cidade}
             ${vaga.estado}
             ${vaga.area}
             ${vaga.tipo}
+
         `.toLowerCase();
 
 
@@ -151,42 +165,52 @@ buscarBtn.addEventListener("click", function () {
 
     mostrarVagas(resultado);
 
-});
+}
 
 
-/* ENTER NA PESQUISA */
+/* BOTÃO DE PESQUISA */
 
-busca.addEventListener("keydown", function (evento) {
+buscarBtn.addEventListener(
+    "click",
+    pesquisarVagas
+);
 
-    if (evento.key === "Enter") {
 
-        buscarBtn.click();
+/* ENTER */
+
+busca.addEventListener(
+    "keydown",
+    function(evento) {
+
+        if (evento.key === "Enter") {
+            pesquisarVagas();
+        }
 
     }
+);
 
-});
 
+cidade.addEventListener(
+    "keydown",
+    function(evento) {
 
-cidade.addEventListener("keydown", function (evento) {
-
-    if (evento.key === "Enter") {
-
-        buscarBtn.click();
+        if (evento.key === "Enter") {
+            pesquisarVagas();
+        }
 
     }
+);
 
-});
 
-
-/* ABRIR VAGA */
+/* VER VAGA */
 
 function verVaga(id) {
 
-    const vaga = todasAsVagas.find(function (item) {
-
-        return item.id === id;
-
-    });
+    const vaga = todasAsVagas.find(
+        function(item) {
+            return item.id === id;
+        }
+    );
 
 
     if (!vaga) {
@@ -195,20 +219,25 @@ function verVaga(id) {
 
 
     alert(
+
         vaga.titulo +
-        "\n\n" +
+
+        "\n\nEmpresa: " +
         vaga.empresa +
-        "\n" +
+
+        "\nLocal: " +
         vaga.cidade +
         " - " +
         vaga.estado +
-        "\n\n" +
+
+        "\n\nDescrição:\n" +
         vaga.descricao
+
     );
 
 }
 
 
-/* INICIAR */
+/* INICIAR SITE */
 
 carregarVagas();
