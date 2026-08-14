@@ -526,4 +526,73 @@ footer p {
         padding: 25px;
     }
 }
+/* ==========================================
+   FORMULÁRIO DE CANDIDATURA
+========================================== */
 
+.formulario-candidatura {
+    max-width: 700px;
+    margin: 40px auto 0;
+}
+
+.descricao-formulario {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.campo-formulario label {
+    font-weight: 700;
+    color: #334155;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dbe1ea;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    font-family: inherit;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+    border-color: #2563eb;
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+}
+
+.formulario-candidatura .botao-candidatura {
+    width: 100%;
+}
+
+.mensagem-sucesso {
+    margin-top: 25px;
+}
+
+.sucesso-candidatura {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.sucesso-candidatura h2 {
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.sucesso-candidatura p {
+    color: #475569;
+    margin-top: 5px;
+}
