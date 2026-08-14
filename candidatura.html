@@ -5,15 +5,20 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Candidaturas | Jovem+</title>
+    <title>Minhas candidaturas | Jovem+</title>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
+
 
     <!-- CABEÇALHO -->
 
@@ -24,6 +29,7 @@
             <a href="index.html" class="logo">
                 Jovem<span>+</span>
             </a>
+
 
             <nav class="menu">
 
@@ -43,6 +49,10 @@
                     Sobre
                 </a>
 
+                <a href="candidaturas.html">
+                    Candidaturas
+                </a>
+
             </nav>
 
         </div>
@@ -52,47 +62,46 @@
 
     <!-- CONTEÚDO -->
 
-    <main class="pagina-candidaturas">
+    <main class="pagina-vaga">
 
         <div class="container">
 
-            <div class="titulo-pagina">
+            <a
+                href="index.html"
+                class="voltar"
+            >
+                ← Voltar para o início
+            </a>
+
+
+            <section class="detalhes-vaga">
 
                 <p class="section-tag">
-                    Minhas candidaturas
+                    Minhas oportunidades
                 </p>
 
                 <h1>
-                    Candidaturas enviadas
+                    Minhas candidaturas
                 </h1>
 
-                <p>
-                    Confira as candidaturas realizadas neste navegador.
+                <p style="margin-top: 10px; color: #64748b;">
+                    Aqui você pode visualizar as candidaturas
+                    realizadas neste navegador.
                 </p>
 
-            </div>
 
+                <div
+                    id="listaCandidaturas"
+                    style="margin-top: 30px;"
+                >
 
-            <!-- CONTADOR -->
+                    <p>
+                        Carregando candidaturas...
+                    </p>
 
-            <div class="contador-candidaturas">
+                </div>
 
-                <strong id="contadorCandidaturas">
-                    0 candidaturas
-                </strong>
-
-            </div>
-
-
-            <!-- LISTA -->
-
-            <div id="listaCandidaturas">
-
-                <p class="carregando">
-                    Carregando candidaturas...
-                </p>
-
-            </div>
+            </section>
 
         </div>
 
@@ -122,7 +131,108 @@
     </footer>
 
 
-    <script src="candidaturas.js"></script>
+    <script>
+
+        const lista =
+            document.getElementById("listaCandidaturas");
+
+
+        const candidaturas =
+            JSON.parse(
+                localStorage.getItem("candidaturas")
+            ) || [];
+
+
+        if (candidaturas.length === 0) {
+
+            lista.innerHTML = `
+
+                <div class="vaga-nao-encontrada">
+
+                    <h2>
+                        Nenhuma candidatura encontrada
+                    </h2>
+
+                    <p>
+                        Quando você se candidatar a uma vaga,
+                        ela aparecerá aqui.
+                    </p>
+
+                    <a
+                        href="index.html#vagas"
+                        class="botao-principal"
+                    >
+                        Ver vagas
+                    </a>
+
+                </div>
+
+            `;
+
+        } else {
+
+            lista.innerHTML = "";
+
+
+            candidaturas.forEach(function(candidatura) {
+
+                const card =
+                    document.createElement("div");
+
+                card.style.background = "#f8fafc";
+                card.style.border = "1px solid #e5e7eb";
+                card.style.borderRadius = "16px";
+                card.style.padding = "25px";
+                card.style.marginBottom = "20px";
+
+
+                card.innerHTML = `
+
+                    <h2>
+                        ${candidatura.vaga}
+                    </h2>
+
+                    <p>
+                        <strong>Empresa:</strong>
+                        ${candidatura.empresa}
+                    </p>
+
+                    <p>
+                        <strong>Nome:</strong>
+                        ${candidatura.nome}
+                    </p>
+
+                    <p>
+                        <strong>E-mail:</strong>
+                        ${candidatura.email}
+                    </p>
+
+                    <p>
+                        <strong>Telefone:</strong>
+                        ${candidatura.telefone}
+                    </p>
+
+                    <p>
+                        <strong>Apresentação:</strong>
+                        ${candidatura.mensagem}
+                    </p>
+
+                    <p style="color: #64748b; margin-top: 10px;">
+                        Candidatura enviada em:
+                        ${candidatura.data}
+                    </p>
+
+                `;
+
+
+                lista.appendChild(card);
+
+            });
+
+        }
+
+    </script>
+
 
 </body>
 
