@@ -1,3 +1,4 @@
+```javascript
 const listaVagas = document.getElementById("listaVagas");
 const contador = document.getElementById("contador");
 
@@ -6,6 +7,88 @@ const cidade = document.getElementById("cidade");
 const buscarBtn = document.getElementById("buscarBtn");
 
 let todasAsVagas = [];
+
+
+/* ==========================================
+   FAVORITOS
+========================================== */
+
+function obterFavoritos() {
+
+    return JSON.parse(
+        localStorage.getItem("vagasFavoritas")
+    ) || [];
+
+}
+
+
+function salvarFavoritos(favoritos) {
+
+    localStorage.setItem(
+        "vagasFavoritas",
+        JSON.stringify(favoritos)
+    );
+
+}
+
+
+/* ==========================================
+   VERIFICAR SE A VAGA ESTÁ FAVORITADA
+========================================== */
+
+function vagaFavoritada(id) {
+
+    const favoritos = obterFavoritos();
+
+    return favoritos.includes(Number(id));
+
+}
+
+
+/* ==========================================
+   ADICIONAR OU REMOVER FAVORITO
+========================================== */
+
+function alternarFavorito(id) {
+
+    id = Number(id);
+
+    let favoritos = obterFavoritos();
+
+    if (favoritos.includes(id)) {
+
+        favoritos = favoritos.filter(
+            function(favoritoId) {
+                return favoritoId !== id;
+            }
+        );
+
+    } else {
+
+        favoritos.push(id);
+
+    }
+
+    salvarFavoritos(favoritos);
+
+    mostrarVagas(
+        todasAsVagas.filter(function(vaga) {
+
+            return document
+                .getElementById("listaVagas")
+                .contains(
+                    document.activeElement
+                )
+                ? true
+                : true;
+
+        })
+    );
+
+    // Mantém a pesquisa atual depois de favoritar
+    pesquisarVagas(false);
+
+}
 
 
 /* ==========================================
@@ -19,20 +102,30 @@ async function carregarVagas() {
         const resposta = await fetch("./vagas.json");
 
         if (!resposta.ok) {
+
             throw new Error(
                 "Não foi possível carregar o arquivo vagas.json"
             );
+
         }
 
         todasAsVagas = await resposta.json();
 
-        console.log("Vagas carregadas:", todasAsVagas);
+        console.log(
+            "Vagas carregadas:",
+            todasAsVagas
+        );
 
-        mostrarVagas(todasAsVagas);
+        mostrarVagas(
+            todasAsVagas
+        );
 
     } catch (erro) {
 
-        console.error("Erro:", erro);
+        console.error(
+            "Erro:",
+            erro
+        );
 
         contador.textContent = "Erro";
 
@@ -57,7 +150,11 @@ function mostrarVagas(vagas) {
 
     contador.textContent =
         vagas.length +
-        (vagas.length === 1 ? " vaga" : " vagas");
+        (
+            vagas.length === 1
+                ? " vaga"
+                : " vagas"
+        );
 
 
     if (vagas.length === 0) {
@@ -69,14 +166,21 @@ function mostrarVagas(vagas) {
         `;
 
         return;
+
     }
 
 
     vagas.forEach(function(vaga) {
 
-        const card = document.createElement("article");
+        const card =
+            document.createElement("article");
 
-        card.className = "vaga-card";
+        card.className =
+            "vaga-card";
+
+
+        const favorita =
+            vagaFavoritada(vaga.id);
 
 
         card.innerHTML = `
@@ -109,13 +213,25 @@ function mostrarVagas(vagas) {
                         🕐 ${vaga.periodo}
                     </span>
 
-                    <button
-                        class="ver-vaga"
-                        onclick="verVaga(${vaga.id})">
+                    <div class="vaga-acoes">
 
-                        Ver vaga
+                        <button
+                            class="botao-favorito ${favorita ? "favoritada" : ""}"
+                            onclick="alternarFavorito(${vaga.id})">
 
-                    </button>
+                            ${favorita ? "★ Favoritada" : "☆ Favoritar"}
+
+                        </button>
+
+                        <button
+                            class="ver-vaga"
+                            onclick="verVaga(${vaga.id})">
+
+                            Ver vaga
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -135,49 +251,69 @@ function mostrarVagas(vagas) {
    PESQUISAR VAGAS
 ========================================== */
 
-function pesquisarVagas() {
+function pesquisarVagas(
+    atualizarTela = true
+) {
 
-    const termo = busca.value
-        .toLowerCase()
-        .trim();
-
-    const localizacao = cidade.value
-        .toLowerCase()
-        .trim();
-
-
-    const resultado = todasAsVagas.filter(function(vaga) {
-
-        const textoCompleto = `
-
-            ${vaga.titulo}
-            ${vaga.empresa}
-            ${vaga.cidade}
-            ${vaga.estado}
-            ${vaga.area}
-            ${vaga.tipo}
-
-        `.toLowerCase();
+    const termo =
+        busca.value
+            .toLowerCase()
+            .trim();
 
 
-        const encontrouTermo =
-            termo === "" ||
-            textoCompleto.includes(termo);
+    const localizacao =
+        cidade.value
+            .toLowerCase()
+            .trim();
 
 
-        const encontrouCidade =
-            localizacao === "" ||
-            `${vaga.cidade} ${vaga.estado}`
-                .toLowerCase()
-                .includes(localizacao);
+    const resultado =
+        todasAsVagas.filter(
+            function(vaga) {
+
+                const textoCompleto = `
+
+                    ${vaga.titulo}
+                    ${vaga.empresa}
+                    ${vaga.cidade}
+                    ${vaga.estado}
+                    ${vaga.area}
+                    ${vaga.tipo}
+
+                `.toLowerCase();
 
 
-        return encontrouTermo && encontrouCidade;
+                const encontrouTermo =
+                    termo === "" ||
+                    textoCompleto.includes(
+                        termo
+                    );
 
-    });
+
+                const encontrouCidade =
+                    localizacao === "" ||
+                    `${vaga.cidade} ${vaga.estado}`
+                        .toLowerCase()
+                        .includes(
+                            localizacao
+                        );
 
 
-    mostrarVagas(resultado);
+                return
+                    encontrouTermo &&
+                    encontrouCidade;
+
+            }
+        );
+
+
+    if (atualizarTela) {
+
+        mostrarVagas(
+            resultado
+        );
+
+    }
 
 }
 
@@ -188,7 +324,11 @@ function pesquisarVagas() {
 
 buscarBtn.addEventListener(
     "click",
-    pesquisarVagas
+    function() {
+
+        pesquisarVagas();
+
+    }
 );
 
 
@@ -241,3 +381,4 @@ function verVaga(id) {
 ========================================== */
 
 carregarVagas();
+```
