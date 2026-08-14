@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,13 +13,11 @@
 
     <title>Minhas candidaturas | Jovem+</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
 
 </head>
 
-
 <body>
-
 
     <!-- CABEÇALHO -->
 
@@ -29,7 +28,6 @@
             <a href="index.html" class="logo">
                 Jovem<span>+</span>
             </a>
-
 
             <nav class="menu">
 
@@ -49,7 +47,7 @@
                     Sobre
                 </a>
 
-                <a href="candidaturas.html">
+                <a href="candidatura.html">
                     Candidaturas
                 </a>
 
@@ -67,10 +65,10 @@
         <div class="container">
 
             <a
-                href="index.html"
+                href="index.html#vagas"
                 class="voltar"
             >
-                ← Voltar para o início
+                ← Voltar para vagas
             </a>
 
 
@@ -84,15 +82,15 @@
                     Minhas candidaturas
                 </h1>
 
-                <p style="margin-top: 10px; color: #64748b;">
-                    Aqui você pode visualizar as candidaturas
-                    realizadas neste navegador.
+                <p class="texto-introducao">
+                    Aqui estão as vagas para as quais você
+                    enviou uma candidatura.
                 </p>
 
 
                 <div
                     id="listaCandidaturas"
-                    style="margin-top: 30px;"
+                    class="lista-candidaturas"
                 >
 
                     <p>
@@ -131,105 +129,207 @@
     </footer>
 
 
+    <!-- JAVASCRIPT -->
+
     <script>
 
         const lista =
             document.getElementById("listaCandidaturas");
 
 
-        const candidaturas =
+        let candidaturas =
             JSON.parse(
                 localStorage.getItem("candidaturas")
             ) || [];
 
 
-        if (candidaturas.length === 0) {
+        function mostrarCandidaturas() {
 
-            lista.innerHTML = `
+            if (candidaturas.length === 0) {
 
-                <div class="vaga-nao-encontrada">
+                lista.innerHTML = `
 
-                    <h2>
-                        Nenhuma candidatura encontrada
-                    </h2>
+                    <div class="vaga-nao-encontrada">
 
-                    <p>
-                        Quando você se candidatar a uma vaga,
-                        ela aparecerá aqui.
-                    </p>
+                        <div style="font-size: 50px;">
+                            📋
+                        </div>
 
-                    <a
-                        href="index.html#vagas"
-                        class="botao-principal"
-                    >
-                        Ver vagas
-                    </a>
+                        <h2>
+                            Nenhuma candidatura encontrada
+                        </h2>
 
-                </div>
+                        <p>
+                            Quando você se candidatar a uma
+                            vaga, ela aparecerá aqui.
+                        </p>
 
-            `;
+                        <a
+                            href="index.html#vagas"
+                            class="botao-principal"
+                        >
+                            Ver vagas
+                        </a>
 
-        } else {
+                    </div>
+
+                `;
+
+                return;
+            }
+
 
             lista.innerHTML = "";
 
 
-            candidaturas.forEach(function(candidatura) {
+            candidaturas.forEach(
+                function(candidatura, indice) {
 
-                const card =
-                    document.createElement("div");
+                    const card =
+                        document.createElement("div");
 
-                card.style.background = "#f8fafc";
-                card.style.border = "1px solid #e5e7eb";
-                card.style.borderRadius = "16px";
-                card.style.padding = "25px";
-                card.style.marginBottom = "20px";
+                    card.className =
+                        "card-candidatura";
 
 
-                card.innerHTML = `
+                    card.innerHTML = `
 
-                    <h2>
-                        ${candidatura.vaga}
-                    </h2>
+                        <div class="cabecalho-candidatura">
 
-                    <p>
-                        <strong>Empresa:</strong>
-                        ${candidatura.empresa}
-                    </p>
+                            <div>
 
-                    <p>
-                        <strong>Nome:</strong>
-                        ${candidatura.nome}
-                    </p>
+                                <span class="status-candidatura">
+                                    ✓ Candidatura enviada
+                                </span>
 
-                    <p>
-                        <strong>E-mail:</strong>
-                        ${candidatura.email}
-                    </p>
+                                <h2>
+                                    ${candidatura.vaga}
+                                </h2>
 
-                    <p>
-                        <strong>Telefone:</strong>
-                        ${candidatura.telefone}
-                    </p>
+                                <p class="empresa-candidatura">
+                                    🏢 ${candidatura.empresa}
+                                </p>
 
-                    <p>
-                        <strong>Apresentação:</strong>
-                        ${candidatura.mensagem}
-                    </p>
+                            </div>
 
-                    <p style="color: #64748b; margin-top: 10px;">
-                        Candidatura enviada em:
-                        ${candidatura.data}
-                    </p>
-
-                `;
+                        </div>
 
 
-                lista.appendChild(card);
+                        <div class="dados-candidatura">
 
-            });
+                            <div class="dado">
+
+                                <span>
+                                    Nome
+                                </span>
+
+                                <strong>
+                                    ${candidatura.nome}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="dado">
+
+                                <span>
+                                    E-mail
+                                </span>
+
+                                <strong>
+                                    ${candidatura.email}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="dado">
+
+                                <span>
+                                    Telefone
+                                </span>
+
+                                <strong>
+                                    ${candidatura.telefone}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="dado">
+
+                                <span>
+                                    Data
+                                </span>
+
+                                <strong>
+                                    ${candidatura.data}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="apresentacao-candidatura">
+
+                            <span>
+                                Sua apresentação
+                            </span>
+
+                            <p>
+                                ${candidatura.mensagem}
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="botao-remover"
+                            onclick="removerCandidatura(${indice})"
+                        >
+                            🗑️ Remover candidatura
+                        </button>
+
+                    `;
+
+
+                    lista.appendChild(card);
+
+                }
+            );
 
         }
+
+
+        function removerCandidatura(indice) {
+
+            const confirmar =
+                confirm(
+                    "Tem certeza que deseja remover esta candidatura?"
+                );
+
+
+            if (!confirmar) {
+                return;
+            }
+
+
+            candidaturas.splice(indice, 1);
+
+
+            localStorage.setItem(
+                "candidaturas",
+                JSON.stringify(candidaturas)
+            );
+
+
+            mostrarCandidaturas();
+
+        }
+
+
+        mostrarCandidaturas();
 
     </script>
 
@@ -237,3 +337,4 @@
 </body>
 
 </html>
+```
