@@ -33,12 +33,9 @@ async function carregarVaga() {
             await resposta.json();
 
 
-        const vaga =
-            vagas.find(function(item) {
-
-                return item.id === id;
-
-            });
+       const vaga = vagas.find(function(item) {
+    return Number(item.id) === id;
+});
 
 
         if (!vaga) {
