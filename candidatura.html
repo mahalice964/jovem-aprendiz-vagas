@@ -284,15 +284,27 @@
                         </div>
 
 
-                        <button
-                            class="botao-remover"
-                            onclick="removerCandidatura(${indice})"
-                        >
-                            🗑️ Remover candidatura
-                        </button>
+                       
 
                     `;
-
+<button
+    onclick="removerCandidatura(${indice})"
+    style="
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        padding: 14px 20px;
+        background: #dc2626;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    "
+>
+    🗑️ Remover candidatura
+</button>
 
                     lista.appendChild(card);
 
