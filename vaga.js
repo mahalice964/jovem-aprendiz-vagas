@@ -195,18 +195,21 @@ function mostrarVaga(vaga) {
 // Botão de candidatura
 function candidatar() {
 
-    const formulario = document.getElementById("formularioCandidatura");
+    const formularioExistente =
+        document.getElementById("formularioCandidatura");
 
-    if (formulario) {
-        formulario.remove();
+    if (formularioExistente) {
+        formularioExistente.remove();
         return;
     }
 
-    const areaFormulario = document.createElement("div");
+    const formulario =
+        document.createElement("div");
 
-    areaFormulario.id = "formularioCandidatura";
+    formulario.id =
+        "formularioCandidatura";
 
-    areaFormulario.innerHTML = `
+    formulario.innerHTML = `
 
         <div class="formulario-candidatura">
 
@@ -225,11 +228,9 @@ function candidatar() {
                 <input
                     type="text"
                     id="nome"
-                    name="nome"
                     placeholder="Digite seu nome completo"
                     required
                 >
-
 
                 <label for="email">
                     E-mail
@@ -238,11 +239,9 @@ function candidatar() {
                 <input
                     type="email"
                     id="email"
-                    name="email"
                     placeholder="Digite seu e-mail"
                     required
                 >
-
 
                 <label for="telefone">
                     Telefone
@@ -251,24 +250,20 @@ function candidatar() {
                 <input
                     type="tel"
                     id="telefone"
-                    name="telefone"
                     placeholder="Digite seu telefone"
                     required
                 >
 
-
                 <label for="mensagem">
-                    Por que você deseja essa oportunidade?
+                    Apresentação
                 </label>
 
                 <textarea
                     id="mensagem"
-                    name="mensagem"
                     rows="5"
                     placeholder="Escreva uma breve apresentação..."
                     required
                 ></textarea>
-
 
                 <button
                     type="submit"
@@ -284,22 +279,20 @@ function candidatar() {
 
     `;
 
-    detalhesVaga.appendChild(areaFormulario);
+    detalhesVaga.appendChild(formulario);
 
 
-    const form = document.getElementById("formCandidatura");
+    document
+        .getElementById("formCandidatura")
+        .addEventListener("submit", function(evento) {
 
-    form.addEventListener("submit", function(evento) {
+            evento.preventDefault();
 
-        evento.preventDefault();
+            alert("Candidatura enviada com sucesso!");
 
-        alert(
-            "Candidatura enviada com sucesso!"
-        );
+            this.reset();
 
-        form.reset();
-
-    });
+        });
 
 }
 
