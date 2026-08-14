@@ -1016,3 +1016,76 @@ footer p {
     }
 
 }
+```css
+/* =========================================
+   SEÇÃO BENEFÍCIOS
+========================================= */
+
+.beneficios {
+    background: #f8fafc;
+    padding: 80px 0;
+}
+
+.beneficios-titulo {
+    max-width: 720px;
+    margin-bottom: 45px;
+}
+
+.beneficios-titulo h2 {
+    margin: 8px 0 15px;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #172033;
+}
+
+.beneficios-titulo p:last-child {
+    margin: 0;
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.beneficio-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.25s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.10);
+}
+
+.beneficio-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+    border-radius: 16px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.beneficio-card h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    color: #172033;
+}
+
+.beneficio-card p {
+    margin: 0;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.6;
+}
+```
