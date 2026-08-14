@@ -9,7 +9,7 @@ const parametros =
 
 const id =
     Number(parametros.get("id"));
-
+console.log("ID recebido:", id);
 
 /* CARREGAR VAGA */
 
