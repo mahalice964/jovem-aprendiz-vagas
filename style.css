@@ -768,3 +768,251 @@ footer p {
     }
 
 }
+/* =========================================
+   RESPONSIVIDADE - CELULAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* CONTAINER */
+
+    .container {
+        width: 92%;
+        max-width: 100%;
+    }
+
+
+    /* CABEÇALHO */
+
+    .header {
+        padding: 15px 0;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .menu a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 45px 0 35px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    .hero-description {
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .tag {
+        text-align: center;
+    }
+
+
+    /* BUSCA */
+
+    .search-box {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .search-field {
+        width: 100%;
+    }
+
+    .search-field input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #buscarBtn {
+        width: 100%;
+        min-height: 50px;
+    }
+
+
+    /* TÍTULOS */
+
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+
+    /* VAGAS */
+
+    .vagas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vaga-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* DICAS */
+
+    .dicas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dica-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        padding: 45px 0;
+    }
+
+    .sobre h2 {
+        font-size: 30px;
+    }
+
+
+    /* DETALHES DA VAGA */
+
+    .vaga-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .vaga-cabecalho h1 {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .vaga-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vaga-sidebar {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .botao-candidatura {
+        width: 100%;
+    }
+
+
+    /* FORMULÁRIOS */
+
+    .formulario-candidatura {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .formulario-candidatura input,
+    .formulario-candidatura textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .formulario-candidatura button {
+        width: 100%;
+    }
+
+
+    /* CANDIDATURAS */
+
+    .card-candidatura {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dados-candidatura {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cabecalho-candidatura h2 {
+        font-size: 23px;
+    }
+
+
+    /* RODAPÉ */
+
+    footer {
+        text-align: center;
+    }
+
+    footer .container {
+        padding: 25px 0;
+    }
+
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .menu a {
+        font-size: 13px;
+        padding: 7px 8px;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .vaga-cabecalho h1 {
+        font-size: 26px;
+    }
+
+    .formulario-candidatura {
+        padding: 16px;
+    }
+
+}
