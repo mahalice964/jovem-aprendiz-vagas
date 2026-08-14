@@ -1,3 +1,7 @@
+/* ==========================================
+   CONFIGURAÇÕES GERAIS
+========================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,7 +21,9 @@ a {
 }
 
 button,
-input {
+input,
+textarea,
+select {
     font-family: inherit;
 }
 
@@ -27,27 +33,34 @@ input {
 }
 
 
-/* HEADER */
+/* ==========================================
+   HEADER
+========================================== */
 
 .header {
     background: white;
     border-bottom: 1px solid #e8ebf0;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
 .header-content {
-    height: 72px;
+    min-height: 72px;
+    padding: 10px 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 25px;
 }
 
 .logo {
     font-size: 28px;
     font-weight: 800;
     color: #2563eb;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -56,12 +69,17 @@ input {
 
 .menu {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
 .menu a {
     font-weight: 600;
     color: #4b5563;
+    white-space: nowrap;
+    transition: 0.2s;
 }
 
 .menu a:hover {
@@ -69,7 +87,9 @@ input {
 }
 
 
-/* HERO */
+/* ==========================================
+   HERO
+========================================== */
 
 .hero {
     background: linear-gradient(135deg, #eff6ff, #ffffff);
@@ -108,7 +128,9 @@ input {
 }
 
 
-/* BUSCA */
+/* ==========================================
+   BUSCA
+========================================== */
 
 .search-box {
     background: white;
@@ -158,6 +180,7 @@ input {
     color: white;
     font-weight: 700;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .search-box button:hover {
@@ -165,7 +188,9 @@ input {
 }
 
 
-/* VAGAS */
+/* ==========================================
+   VAGAS
+========================================== */
 
 .vagas-section {
     padding: 80px 0;
@@ -278,7 +303,9 @@ input {
 }
 
 
-/* DICAS */
+/* ==========================================
+   DICAS
+========================================== */
 
 .dicas {
     background: white;
@@ -312,7 +339,9 @@ input {
 }
 
 
-/* SOBRE */
+/* ==========================================
+   SOBRE
+========================================== */
 
 .sobre {
     padding: 80px 0;
@@ -325,7 +354,9 @@ input {
 }
 
 
-/* FOOTER */
+/* ==========================================
+   FOOTER
+========================================== */
 
 footer {
     background: #111827;
@@ -339,39 +370,9 @@ footer p {
 }
 
 
-/* CELULAR */
-
-@media (max-width: 800px) {
-
-    .menu {
-        display: none;
-    }
-
-    .search-box {
-        grid-template-columns: 1fr;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .vagas-grid,
-    .dicas-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        align-items: start;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .hero {
-        padding: 55px 0;
-    }
-
-}
-/* PÁGINA DA VAGA */
+/* ==========================================
+   PÁGINA DA VAGA
+========================================== */
 
 .pagina-vaga {
     padding: 50px 0 80px;
@@ -477,17 +478,23 @@ footer p {
     width: 100%;
     margin-top: 25px;
     padding: 16px;
+
     border: none;
     border-radius: 10px;
+
     background: #2563eb;
     color: white;
+
     font-size: 16px;
     font-weight: 700;
+
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .botao-candidatura:hover {
     background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 .botao-principal {
@@ -506,26 +513,6 @@ footer p {
 }
 
 
-/* CELULAR */
-
-@media (max-width: 800px) {
-
-    .vaga-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .vaga-cabecalho {
-        align-items: flex-start;
-    }
-
-    .vaga-cabecalho h1 {
-        font-size: 28px;
-    }
-
-    .detalhes-vaga {
-        padding: 25px;
-    }
-}
 /* ==========================================
    FORMULÁRIO DE CANDIDATURA
 ========================================== */
@@ -533,79 +520,13 @@ footer p {
 .formulario-candidatura {
     max-width: 700px;
     margin: 40px auto 0;
-}
 
-.descricao-formulario {
-    color: #64748b;
-    margin-bottom: 30px;
-}
-
-.campo-formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.campo-formulario label {
-    font-weight: 700;
-    color: #334155;
-}
-
-.campo-formulario input,
-.campo-formulario textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #dbe1ea;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-    font-family: inherit;
-}
-
-.campo-formulario input:focus,
-.campo-formulario textarea:focus {
-    border-color: #2563eb;
-}
-
-.campo-formulario textarea {
-    resize: vertical;
-}
-
-.formulario-candidatura .botao-candidatura {
-    width: 100%;
-}
-
-.mensagem-sucesso {
-    margin-top: 25px;
-}
-
-.sucesso-candidatura {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.sucesso-candidatura h2 {
-    color: #2563eb;
-    margin-bottom: 8px;
-}
-
-.sucesso-candidatura p {
-    color: #475569;
-    margin-top: 5px;
-}
-/* ============================= */
-/* FORMULÁRIO DE CANDIDATURA */
-/* ============================= */
-
-.formulario-candidatura {
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
+
     padding: 40px;
-    margin-top: 30px;
+
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
@@ -620,40 +541,48 @@ footer p {
     margin-bottom: 30px;
 }
 
-.campo-formulario {
+.formulario-candidatura form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    gap: 10px;
 }
 
-.campo-formulario label {
+.formulario-candidatura label {
     font-weight: 700;
     color: #374151;
-    margin-bottom: 7px;
+    margin-top: 10px;
 }
 
-.campo-formulario input,
-.campo-formulario select,
-.campo-formulario textarea {
+.formulario-candidatura input,
+.formulario-candidatura select,
+.formulario-candidatura textarea {
     width: 100%;
+
     border: 1px solid #dbe1ea;
     border-radius: 10px;
+
     padding: 14px;
+
     font-size: 15px;
     outline: none;
     background: white;
 }
 
-.campo-formulario input:focus,
-.campo-formulario select:focus,
-.campo-formulario textarea:focus {
+.formulario-candidatura input:focus,
+.formulario-candidatura select:focus,
+.formulario-candidatura textarea:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
 }
 
-.campo-formulario textarea {
+.formulario-candidatura textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+.formulario-candidatura button {
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .botao-enviar {
@@ -661,10 +590,13 @@ footer p {
     border: none;
     border-radius: 10px;
     padding: 16px;
+
     background: #2563eb;
     color: white;
+
     font-size: 16px;
     font-weight: 700;
+
     cursor: pointer;
     transition: 0.2s;
 }
@@ -684,71 +616,155 @@ footer p {
     text-align: center;
 }
 
+.sucesso-candidatura {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 20px;
+}
 
-/* CELULAR */
+.sucesso-candidatura h2 {
+    color: #2563eb;
+    margin-bottom: 8px;
+}
 
-@media (max-width: 800px) {
+.sucesso-candidatura p {
+    color: #475569;
+    margin-top: 5px;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .header-content {
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 0;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .vagas-grid,
+    .dicas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .vaga-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .vaga-cabecalho {
+        align-items: flex-start;
+    }
+
+    .vaga-cabecalho h1 {
+        font-size: 28px;
+    }
+
+    .detalhes-vaga {
+        padding: 25px;
+    }
 
     .formulario-candidatura {
         padding: 25px;
     }
 
-    .formulario-candidatura h2 {
-        font-size: 24px;
+}
+
+
+/* ==========================================
+   CELULARES PEQUENOS
+========================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
     }
 
-}
-/* FORMULÁRIO DE CANDIDATURA */
+    .header-content {
+        min-height: auto;
+    }
 
-.formulario-candidatura {
-    margin-top: 40px;
-    padding: 30px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
+    .logo {
+        font-size: 25px;
+    }
 
-.formulario-candidatura h2 {
-    margin-bottom: 10px;
-}
+    .menu {
+        width: 100%;
+        gap: 10px 15px;
+        justify-content: center;
+    }
 
-.formulario-candidatura p {
-    margin-bottom: 25px;
-}
+    .menu a {
+        font-size: 14px;
+    }
 
-.formulario-candidatura form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    .hero {
+        padding: 45px 0;
+    }
 
-.formulario-candidatura label {
-    font-weight: 600;
-    margin-top: 10px;
-}
+    .hero h1 {
+        font-size: 42px;
+    }
 
-.formulario-candidatura input,
-.formulario-candidatura textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 15px;
-    box-sizing: border-box;
-}
+    .hero-description {
+        font-size: 17px;
+    }
 
-.formulario-candidatura input:focus,
-.formulario-candidatura textarea:focus {
-    outline: none;
-    border-color: #555;
-}
+    .search-box {
+        padding: 16px;
+    }
 
-.formulario-candidatura textarea {
-    resize: vertical;
-}
+    .vagas-section,
+    .dicas,
+    .sobre {
+        padding: 55px 0;
+    }
 
-.formulario-candidatura button {
-    margin-top: 20px;
-    cursor: pointer;
+    .vaga-card {
+        flex-direction: column;
+    }
+
+    .vaga-cabecalho {
+        flex-direction: column;
+    }
+
+    .vaga-cabecalho h1 {
+        font-size: 26px;
+    }
+
+    .detalhes-vaga {
+        padding: 20px;
+    }
+
+    .formulario-candidatura {
+        padding: 20px;
+    }
+
 }
