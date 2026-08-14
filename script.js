@@ -8,25 +8,33 @@ const buscarBtn = document.getElementById("buscarBtn");
 let todasAsVagas = [];
 
 
-/* CARREGAR VAGAS */
+/* ==========================================
+   CARREGAR VAGAS
+========================================== */
 
 async function carregarVagas() {
 
     try {
 
-        const resposta = await fetch("vagas.json");
+        const resposta = await fetch("./vagas.json");
 
         if (!resposta.ok) {
-            throw new Error("Não foi possível carregar o arquivo vagas.json");
+            throw new Error(
+                "Não foi possível carregar o arquivo vagas.json"
+            );
         }
 
         todasAsVagas = await resposta.json();
+
+        console.log("Vagas carregadas:", todasAsVagas);
 
         mostrarVagas(todasAsVagas);
 
     } catch (erro) {
 
-        console.error(erro);
+        console.error("Erro:", erro);
+
+        contador.textContent = "Erro";
 
         listaVagas.innerHTML = `
             <p>
@@ -39,7 +47,9 @@ async function carregarVagas() {
 }
 
 
-/* MOSTRAR VAGAS */
+/* ==========================================
+   MOSTRAR VAGAS
+========================================== */
 
 function mostrarVagas(vagas) {
 
@@ -102,7 +112,9 @@ function mostrarVagas(vagas) {
                     <button
                         class="ver-vaga"
                         onclick="verVaga(${vaga.id})">
+
                         Ver vaga
+
                     </button>
 
                 </div>
@@ -119,7 +131,9 @@ function mostrarVagas(vagas) {
 }
 
 
-/* PESQUISAR */
+/* ==========================================
+   PESQUISAR VAGAS
+========================================== */
 
 function pesquisarVagas() {
 
@@ -168,7 +182,9 @@ function pesquisarVagas() {
 }
 
 
-/* BOTÃO DE PESQUISA */
+/* ==========================================
+   BOTÃO DE PESQUISA
+========================================== */
 
 buscarBtn.addEventListener(
     "click",
@@ -176,14 +192,18 @@ buscarBtn.addEventListener(
 );
 
 
-/* ENTER */
+/* ==========================================
+   PESQUISAR COM ENTER
+========================================== */
 
 busca.addEventListener(
     "keydown",
     function(evento) {
 
         if (evento.key === "Enter") {
+
             pesquisarVagas();
+
         }
 
     }
@@ -195,19 +215,29 @@ cidade.addEventListener(
     function(evento) {
 
         if (evento.key === "Enter") {
+
             pesquisarVagas();
+
         }
 
     }
 );
 
 
-/* VER VAGA */
- 
+/* ==========================================
+   VER DETALHES DA VAGA
+========================================== */
+
 function verVaga(id) {
 
     window.location.href =
         "vaga.html?id=" + id;
 
 }
-    
+
+
+/* ==========================================
+   INICIAR SITE
+========================================== */
+
+carregarVagas();
