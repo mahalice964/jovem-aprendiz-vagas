@@ -1,41 +1,34 @@
-const detalhesVaga =
-    document.getElementById("detalhesVaga");
+const detalhesVaga = document.getElementById("detalhesVaga");
 
 
-/* PEGAR O ID DA URL */
+// PEGAR ID DA URL
 
-const parametros =
-    new URLSearchParams(window.location.search);
+const parametros = new URLSearchParams(
+    window.location.search
+);
 
-const id =
-    Number(parametros.get("id"));
-console.log("ID recebido:", id);
+const id = Number(parametros.get("id"));
 
-/* CARREGAR VAGA */
+
+// CARREGAR VAGA
 
 async function carregarVaga() {
 
     try {
 
-        const resposta =
-            await fetch("vagas.json");
+        const resposta = await fetch("./vagas.json");
 
         if (!resposta.ok) {
-
-            throw new Error(
-                "Erro ao carregar vagas"
-            );
-
+            throw new Error("Erro ao carregar vagas");
         }
 
+        const vagas = await resposta.json();
 
-        const vagas =
-            await resposta.json();
+        const vaga = vagas.find(function(item) {
 
+            return item.id === id;
 
-       const vaga = vagas.find(function(item) {
-    return Number(item.id) === id;
-});
+        });
 
 
         if (!vaga) {
@@ -66,7 +59,6 @@ async function carregarVaga() {
             `;
 
             return;
-
         }
 
 
@@ -77,7 +69,6 @@ async function carregarVaga() {
 
         console.error(erro);
 
-
         detalhesVaga.innerHTML = `
 
             <div class="vaga-nao-encontrada">
@@ -87,8 +78,17 @@ async function carregarVaga() {
                 </h1>
 
                 <p>
-                    Tente novamente mais tarde.
+                    Não foi possível carregar esta
+                    oportunidade.
                 </p>
+
+                <a
+                    href="index.html#vagas"
+                    class="botao-principal">
+
+                    Voltar para vagas
+
+                </a>
 
             </div>
 
@@ -99,13 +99,11 @@ async function carregarVaga() {
 }
 
 
-/* MOSTRAR VAGA */
+// MOSTRAR VAGA
 
 function mostrarVaga(vaga) {
 
-
-    const requisitos =
-        vaga.requisitos
+    const requisitos = vaga.requisitos
         .map(function(requisito) {
 
             return `
@@ -123,39 +121,25 @@ function mostrarVaga(vaga) {
         <div class="vaga-cabecalho">
 
             <div class="empresa-logo grande">
-
                 ${vaga.empresa.charAt(0)}
-
             </div>
-
 
             <div>
 
                 <span class="vaga-tipo">
-
                     ${vaga.tipo}
-
                 </span>
 
-
                 <h1>
-
                     ${vaga.titulo}
-
                 </h1>
 
-
                 <p class="empresa">
-
                     🏢 ${vaga.empresa}
-
                 </p>
 
-
                 <p class="local">
-
                     📍 ${vaga.cidade} - ${vaga.estado}
-
                 </p>
 
             </div>
@@ -188,7 +172,6 @@ function mostrarVaga(vaga) {
                         Requisitos
                     </h2>
 
-
                     <ul class="requisitos">
 
                         ${requisitos}
@@ -202,7 +185,6 @@ function mostrarVaga(vaga) {
 
 
             <aside class="vaga-sidebar">
-
 
                 <h2>
                     Informações
@@ -250,14 +232,14 @@ function mostrarVaga(vaga) {
 
                 <button
                     class="botao-candidatura"
-                    onclick="candidatar()">
+                    onclick="candidatar(${vaga.id})">
 
                     Quero me candidatar
 
                 </button>
 
-
             </aside>
+
 
         </div>
 
@@ -266,17 +248,16 @@ function mostrarVaga(vaga) {
 }
 
 
-/* CANDIDATURA */
+// CANDIDATURA
 
-function candidatar() {
+function candidatar(id) {
 
-    alert(
-        "A candidatura será implementada na próxima etapa!"
-    );
+    window.location.href =
+        "candidatura.html?id=" + id;
 
 }
 
 
-/* INICIAR */
+// INICIAR
 
 carregarVaga();
