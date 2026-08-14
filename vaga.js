@@ -250,13 +250,49 @@ function mostrarVaga(vaga) {
 
 // CANDIDATURA
 
-function candidatar(id) {
+/* CANDIDATURA */
 
-    window.location.href =
-        "candidatura.html?id=" + id;
+function candidatar() {
+
+    const formulario =
+        document.getElementById("formularioCandidatura");
+
+    if (formulario) {
+
+        formulario.style.display = "block";
+
+        formulario.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
 
 }
+}
+/* ENVIAR CANDIDATURA */
 
+const formCandidatura =
+    document.getElementById("formCandidatura");
+
+if (formCandidatura) {
+
+    formCandidatura.addEventListener(
+        "submit",
+        function(evento) {
+
+            evento.preventDefault();
+
+            const mensagemSucesso =
+                document.getElementById("mensagemSucesso");
+
+            mensagemSucesso.style.display = "block";
+
+            formCandidatura.reset();
+
+        }
+    );
+
+}
 
 // INICIAR
 
