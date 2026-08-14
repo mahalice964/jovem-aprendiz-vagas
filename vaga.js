@@ -195,9 +195,111 @@ function mostrarVaga(vaga) {
 // Botão de candidatura
 function candidatar() {
 
-    alert(
-        "A candidatura será implementada na próxima etapa!"
-    );
+    const formulario = document.getElementById("formularioCandidatura");
+
+    if (formulario) {
+        formulario.remove();
+        return;
+    }
+
+    const areaFormulario = document.createElement("div");
+
+    areaFormulario.id = "formularioCandidatura";
+
+    areaFormulario.innerHTML = `
+
+        <div class="formulario-candidatura">
+
+            <h2>Quero me candidatar</h2>
+
+            <p>
+                Preencha seus dados para enviar sua candidatura.
+            </p>
+
+            <form id="formCandidatura">
+
+                <label for="nome">
+                    Nome completo
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome completo"
+                    required
+                >
+
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+
+                <label for="telefone">
+                    Telefone
+                </label>
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="Digite seu telefone"
+                    required
+                >
+
+
+                <label for="mensagem">
+                    Por que você deseja essa oportunidade?
+                </label>
+
+                <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="5"
+                    placeholder="Escreva uma breve apresentação..."
+                    required
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="botao-principal">
+
+                    Enviar candidatura
+
+                </button>
+
+            </form>
+
+        </div>
+
+    `;
+
+    detalhesVaga.appendChild(areaFormulario);
+
+
+    const form = document.getElementById("formCandidatura");
+
+    form.addEventListener("submit", function(evento) {
+
+        evento.preventDefault();
+
+        alert(
+            "Candidatura enviada com sucesso!"
+        );
+
+        form.reset();
+
+    });
 
 }
 
