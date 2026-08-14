@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Candidatura | Jovem+</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="index.html" class="logo">
+                Jovem<span>+</span>
+            </a>
+
+            <nav class="menu">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="index.html#vagas">
+                    Vagas
+                </a>
+
+                <a href="index.html#dicas">
+                    Dicas
+                </a>
+
+                <a href="index.html#sobre">
+                    Sobre
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- CANDIDATURA -->
+
+    <main class="pagina-vaga">
+
+        <div class="container">
+
+            <a
+                href="index.html#vagas"
+                class="voltar">
+
+                ← Voltar para vagas
+
+            </a>
+
+
+            <section class="detalhes-vaga">
+
+
+                <div class="vaga-cabecalho">
+
+                    <div class="empresa-logo grande">
+                        J+
+                    </div>
+
+                    <div>
+
+                        <span class="vaga-tipo">
+                            Candidatura
+                        </span>
+
+                        <h1>
+                            Quero me candidatar
+                        </h1>
+
+                        <p class="empresa">
+                            Preencha seus dados
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formulario-candidatura">
+
+
+                    <h2>
+                        Seus dados
+                    </h2>
+
+
+                    <p class="descricao-formulario">
+                        Preencha os campos abaixo para
+                        registrar seu interesse na vaga.
+                    </p>
+
+
+                    <form id="formCandidatura">
+
+
+                        <div class="campo-formulario">
+
+                            <label for="nome">
+                                Nome completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome completo"
+                                required>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="email">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Digite seu e-mail"
+                                required>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="telefone">
+                                Telefone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                placeholder="Digite seu telefone"
+                                required>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="idade">
+                                Idade
+                            </label>
+
+                            <input
+                                type="number"
+                                id="idade"
+                                name="idade"
+                                min="14"
+                                max="24"
+                                placeholder="Ex: 16"
+                                required>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="mensagem">
+                                Por que você quer essa oportunidade?
+                            </label>
+
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                rows="5"
+                                placeholder="Conte um pouco sobre seu interesse..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="botao-candidatura">
+
+                            Enviar candidatura
+
+                        </button>
+
+
+                    </form>
+
+
+                    <div
+                        id="mensagemSucesso"
+                        class="mensagem-sucesso">
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="container">
+
+            <strong>
+                Jovem+
+            </strong>
+
+            <p>
+                Conectando jovens às primeiras oportunidades.
+            </p>
+
+            <small>
+                Projeto desenvolvido para fins educacionais.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <script src="candidatura.js"></script>
+
+</body>
+
+</html>
