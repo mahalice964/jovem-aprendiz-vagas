@@ -1,15 +1,21 @@
 const detalhesVaga = document.getElementById("detalhesVaga");
 
+
 // Pega o ID da vaga na URL
 const parametros = new URLSearchParams(window.location.search);
 const id = Number(parametros.get("id"));
 
-// Carregar a vaga
+
+// Guarda a vaga atual
+let vagaAtual = null;
+
+
+// CARREGAR VAGA
+
 async function carregarVaga() {
 
     try {
 
-        // Mostra uma mensagem enquanto carrega
         detalhesVaga.innerHTML = `
             <div class="carregando">
                 <p>Carregando detalhes da vaga...</p>
@@ -24,7 +30,10 @@ async function carregarVaga() {
 
         const vagas = await resposta.json();
 
-        const vaga = vagas.find(item => Number(item.id) === id);
+        const vaga = vagas.find(function(item) {
+            return Number(item.id) === id;
+        });
+
 
         if (!vaga) {
 
@@ -38,8 +47,12 @@ async function carregarVaga() {
                         ou não está mais disponível.
                     </p>
 
-                    <a href="index.html#vagas" class="botao-principal">
+                    <a
+                        href="index.html#vagas"
+                        class="botao-principal">
+
                         Ver outras vagas
+
                     </a>
 
                 </div>
@@ -47,6 +60,10 @@ async function carregarVaga() {
 
             return;
         }
+
+
+        // Guarda a vaga atual
+        vagaAtual = vaga;
 
         mostrarVaga(vaga);
 
@@ -63,8 +80,12 @@ async function carregarVaga() {
                     Não foi possível carregar os detalhes.
                 </p>
 
-                <a href="index.html#vagas" class="botao-principal">
+                <a
+                    href="index.html#vagas"
+                    class="botao-principal">
+
                     Voltar para vagas
+
                 </a>
 
             </div>
@@ -73,12 +94,16 @@ async function carregarVaga() {
 }
 
 
-// Mostrar os detalhes
+// MOSTRAR VAGA
+
 function mostrarVaga(vaga) {
 
     const requisitos = vaga.requisitos
-        .map(requisito => `<li>${requisito}</li>`)
+        .map(function(requisito) {
+            return `<li>${requisito}</li>`;
+        })
         .join("");
+
 
     detalhesVaga.innerHTML = `
 
@@ -117,7 +142,9 @@ function mostrarVaga(vaga) {
 
                 <section>
 
-                    <h2>Sobre a vaga</h2>
+                    <h2>
+                        Sobre a vaga
+                    </h2>
 
                     <p>
                         ${vaga.descricao}
@@ -128,10 +155,14 @@ function mostrarVaga(vaga) {
 
                 <section>
 
-                    <h2>Requisitos</h2>
+                    <h2>
+                        Requisitos
+                    </h2>
 
                     <ul class="requisitos">
+
                         ${requisitos}
+
                     </ul>
 
                 </section>
@@ -141,11 +172,16 @@ function mostrarVaga(vaga) {
 
             <aside class="vaga-sidebar">
 
-                <h2>Informações</h2>
+                <h2>
+                    Informações
+                </h2>
+
 
                 <div class="informacao">
 
-                    <span>Área</span>
+                    <span>
+                        Área
+                    </span>
 
                     <strong>
                         ${vaga.area}
@@ -156,7 +192,9 @@ function mostrarVaga(vaga) {
 
                 <div class="informacao">
 
-                    <span>Período</span>
+                    <span>
+                        Período
+                    </span>
 
                     <strong>
                         ${vaga.periodo}
@@ -167,7 +205,9 @@ function mostrarVaga(vaga) {
 
                 <div class="informacao">
 
-                    <span>Localização</span>
+                    <span>
+                        Localização
+                    </span>
 
                     <strong>
                         ${vaga.cidade} - ${vaga.estado}
@@ -192,34 +232,49 @@ function mostrarVaga(vaga) {
 }
 
 
-// Botão de candidatura
+// CANDIDATURA
+
 function candidatar() {
 
     const formularioExistente =
         document.getElementById("formularioCandidatura");
 
+
+    // Se o formulário já estiver aberto,
+    // fecha o formulário
+
     if (formularioExistente) {
+
         formularioExistente.remove();
+
         return;
     }
+
 
     const formulario =
         document.createElement("div");
 
+
     formulario.id =
         "formularioCandidatura";
+
 
     formulario.innerHTML = `
 
         <div class="formulario-candidatura">
 
-            <h2>Quero me candidatar</h2>
+            <h2>
+                Quero me candidatar
+            </h2>
 
             <p>
-                Preencha seus dados para enviar sua candidatura.
+                Preencha seus dados para enviar
+                sua candidatura.
             </p>
 
+
             <form id="formCandidatura">
+
 
                 <label for="nome">
                     Nome completo
@@ -232,6 +287,7 @@ function candidatar() {
                     required
                 >
 
+
                 <label for="email">
                     E-mail
                 </label>
@@ -242,6 +298,7 @@ function candidatar() {
                     placeholder="Digite seu e-mail"
                     required
                 >
+
 
                 <label for="telefone">
                     Telefone
@@ -254,6 +311,7 @@ function candidatar() {
                     required
                 >
 
+
                 <label for="mensagem">
                     Apresentação
                 </label>
@@ -265,6 +323,7 @@ function candidatar() {
                     required
                 ></textarea>
 
+
                 <button
                     type="submit"
                     class="botao-principal">
@@ -273,29 +332,117 @@ function candidatar() {
 
                 </button>
 
+
             </form>
 
         </div>
 
     `;
 
+
     detalhesVaga.appendChild(formulario);
 
 
+    // FORMULÁRIO
+
     document
         .getElementById("formCandidatura")
-        .addEventListener("submit", function(evento) {
+        .addEventListener(
+            "submit",
+            function(evento) {
 
-            evento.preventDefault();
+                evento.preventDefault();
 
-            alert("Candidatura enviada com sucesso!");
 
-            this.reset();
+                // Verifica se existe uma vaga carregada
 
-        });
+                if (!vagaAtual) {
+
+                    alert(
+                        "Não foi possível identificar a vaga."
+                    );
+
+                    return;
+                }
+
+
+                // Cria a candidatura
+
+                const candidatura = {
+
+                    nome:
+                        document
+                        .getElementById("nome")
+                        .value,
+
+                    email:
+                        document
+                        .getElementById("email")
+                        .value,
+
+                    telefone:
+                        document
+                        .getElementById("telefone")
+                        .value,
+
+                    mensagem:
+                        document
+                        .getElementById("mensagem")
+                        .value,
+
+                    vaga:
+                        vagaAtual.titulo,
+
+                    empresa:
+                        vagaAtual.empresa,
+
+                    data:
+                        new Date()
+                        .toLocaleString("pt-BR")
+
+                };
+
+
+                // Pega candidaturas existentes
+
+                let candidaturas =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "candidaturas"
+                        )
+                    ) || [];
+
+
+                // Adiciona a nova candidatura
+
+                candidaturas.push(candidatura);
+
+
+                // Salva no navegador
+
+                localStorage.setItem(
+                    "candidaturas",
+                    JSON.stringify(
+                        candidaturas
+                    )
+                );
+
+
+                alert(
+                    "Candidatura enviada com sucesso!"
+                );
+
+
+                // Limpa o formulário
+
+                this.reset();
+
+            }
+        );
 
 }
 
 
-// Iniciar
+// INICIAR
+
 carregarVaga();
