@@ -596,3 +596,105 @@ footer p {
     color: #475569;
     margin-top: 5px;
 }
+/* ============================= */
+/* FORMULÁRIO DE CANDIDATURA */
+/* ============================= */
+
+.formulario-candidatura {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.formulario-candidatura h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #172033;
+}
+
+.formulario-candidatura > p {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campo-formulario label {
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 7px;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+    border: 1px solid #dbe1ea;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.botao-enviar {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-enviar:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.mensagem-sucesso {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+    .formulario-candidatura {
+        padding: 25px;
+    }
+
+    .formulario-candidatura h2 {
+        font-size: 24px;
+    }
+
+}
