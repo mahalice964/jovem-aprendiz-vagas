@@ -167,6 +167,7 @@
             flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 20px;
+            transition: opacity 0.3s ease;
         }
 
         .vaga-info h3 {
@@ -203,6 +204,15 @@
         .btn-ver-vaga:hover {
             background-color: #e2e8f0;
             color: #2563eb;
+        }
+
+        /* Mensagem de nenhuma vaga encontrada */
+        #no-results {
+            display: none;
+            text-align: center;
+            color: #64748b;
+            font-size: 18px;
+            margin-top: 30px;
         }
 
         /* Responsividade para Celular */
@@ -256,7 +266,7 @@
             <label for="local">Onde?</label>
             <input type="text" id="local" placeholder="Ex: São Paulo - SP">
         </div>
-        <button class="btn-search">Encontrar vagas</button>
+        <button class="btn-search" id="search-btn">Encontrar vagas</button>
     </div>
 
     <!-- Lista de Vagas -->
@@ -266,10 +276,10 @@
         <!-- Vaga 1 -->
         <div class="vaga-card">
             <div class="vaga-info">
-                <h3>Aprendiz Administrativo</h3>
+                <h3 class="vaga-titulo">Aprendiz Administrativo</h3>
                 <div class="vaga-empresa">Empresa ABC</div>
                 <div class="vaga-detalhes">
-                    <span>📍 São Paulo - SP</span>
+                    <span class="vaga-local">📍 São Paulo - SP</span>
                     <span>🕒 Meio período</span>
                 </div>
             </div>
@@ -279,10 +289,10 @@
         <!-- Vaga 2 -->
         <div class="vaga-card">
             <div class="vaga-info">
-                <h3>Jovem Aprendiz em Logística</h3>
+                <h3 class="vaga-titulo">Jovem Aprendiz em Logística</h3>
                 <div class="vaga-empresa">LogiTech Transportes</div>
                 <div class="vaga-detalhes">
-                    <span>📍 Guarulhos - SP</span>
+                    <span class="vaga-local">📍 Guarulhos - SP</span>
                     <span>🕒 Manhã (4 horas)</span>
                 </div>
             </div>
@@ -292,10 +302,10 @@
         <!-- Vaga 3 -->
         <div class="vaga-card">
             <div class="vaga-info">
-                <h3>Aprendiz de Atendimento ao Cliente</h3>
+                <h3 class="vaga-titulo">Aprendiz de Atendimento ao Cliente</h3>
                 <div class="vaga-empresa">Central de Relacionamento X</div>
                 <div class="vaga-detalhes">
-                    <span>📍 Campinas - SP</span>
+                    <span class="vaga-local">📍 Campinas - SP</span>
                     <span>🕒 Tarde (6 horas)</span>
                 </div>
             </div>
@@ -305,17 +315,30 @@
         <!-- Vaga 4 -->
         <div class="vaga-card">
             <div class="vaga-info">
-                <h3>Auxiliar de Escritório (Aprendiz)</h3>
+                <h3 class="vaga-titulo">Auxiliar de Escritório (Aprendiz)</h3>
                 <div class="vaga-empresa">ConstruMais Engenharia</div>
                 <div class="vaga-detalhes">
-                    <span>📍 São Bernardo do Campo - SP</span>
+                    <span class="vaga-local">📍 São Bernardo do Campo - SP</span>
                     <span>🕒 Meio período</span>
                 </div>
             </div>
             <a href="#" class="btn-ver-vaga">Ver vaga</a>
         </div>
 
+        <!-- Mensagem caso não encontre nada -->
+        <div id="no-results">Nenhuma vaga encontrada para a sua busca. 😕</div>
+
     </main>
 
-</body>
-</html>
+    <!-- Sistema de busca funcional em JavaScript -->
+    <script>
+        document.getElementById('search-btn').addEventListener('click', function() {
+            // Pega o que o usuário digitou e transforma em letras minúsculas
+            const filtroCargo = document.getElementById('cargo').value.toLowerCase().trim();
+            const filtroLocal = document.getElementById('local').value.toLowerCase().trim();
+            
+            const cards = document.querySelectorAll('.vaga-card');
+            let encontrouVaga = false;
+
+            cards.forEach(function(card) {
+                const titulo = card.querySelector('.vaga-titulo').innerText.toLowerCase();
