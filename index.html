@@ -167,7 +167,6 @@
             flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 20px;
-            transition: opacity 0.3s ease;
         }
 
         .vaga-info h3 {
@@ -330,15 +329,17 @@
 
     </main>
 
-    <!-- Sistema de busca funcional em JavaScript -->
+    <!-- Script Corrigido e Melhorado -->
     <script>
-        document.getElementById('search-btn').addEventListener('click', function() {
-            // Pega o que o usuário digitou e transforma em letras minúsculas
+        function filtrarVagas() {
             const filtroCargo = document.getElementById('cargo').value.toLowerCase().trim();
             const filtroLocal = document.getElementById('local').value.toLowerCase().trim();
-            
             const cards = document.querySelectorAll('.vaga-card');
             let encontrouVaga = false;
 
-            cards.forEach(function(card) {
+            cards.forEach(card => {
                 const titulo = card.querySelector('.vaga-titulo').innerText.toLowerCase();
+                const local = card.querySelector('.vaga-local').innerText.toLowerCase();
+
+                const bateuCargo = titulo.includes(filtroCargo);
+                const bateuLocal = local.includes(filtroLocal);
