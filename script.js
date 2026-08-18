@@ -1,4 +1,4 @@
-```javascript
+
 const listaVagas = document.getElementById("listaVagas");
 const contador = document.getElementById("contador");
 
